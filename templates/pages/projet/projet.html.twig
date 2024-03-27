@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ISU DOUR - Nos projets{% endblock %}
+
+{% block body %}
+    {% for projet in projets %}
+        <div class="d-flex justify-content-center">
+            <div class="visite mt-5 mb-5 text-center">
+                <h1 class="mt-5 mb-5">{{projet.titre}}</h1>
+                <div class="m-5 sizeDescriptionProjet">
+                    {{projet.description|raw}}
+                </div>
+                    <div id="carouselExampleSlidesOnly" class="carousel slide mx-auto" data-controller="carousel">
+                        <div class="carousel-inner">
+                            {% for image in projet.images %}
+                                <div class="carousel-item {{loop.first ? 'active'}}">
+                                    <img src="{{asset('images/'~ image.filename)}}" class="d-block w-50 mb-5 mx-auto" alt="...">
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

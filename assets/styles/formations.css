@@ -1,0 +1,55 @@
+.enseignements .nav-link {
+    border: 1px black solid;
+    position: relative;
+    background-image: var(--linear-gradiant-orange);
+    overflow: hidden;
+}
+
+.enseignements .nav-link>* {
+    position: relative;
+    z-index: 0;
+}
+
+.enseignements .nav-link::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--linear-gradiant-gris);
+    background-color: var(--gris-clair);
+    opacity: 1;
+    transition: opacity 0.15s ease-in-out;
+}
+
+.enseignements .nav-link.active::before {
+    opacity: 0;
+}
+
+.enseignements .nav-link.active {
+    border-color: var(--gris-fonce);
+    filter: drop-shadow(0 0 5px black);
+}
+
+.formation-card {
+    border-color: var(--gris-fonce);
+    border-width: 2px;
+    text-decoration: none;
+}
+
+.formation-card,
+.formation-card * {
+    transition: all 0.25s ease-out;
+}
+
+.formation-card:hover {
+    border-color: var(--orange2);
+    transform: translate(-10px, -10px);
+    filter: drop-shadow(5px 5px 10px);
+}
+
+.formation-card:hover .card-img-top {
+    filter: brightness(0.5);
+}

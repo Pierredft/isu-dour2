@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ISU DOUR - Liens Utiles{% endblock %}
+
+{% block body %}
+<div class="m-5 mx-lg-5 mx-md-4 mx-sm-3 mx-2 bloc-blanc rounded-4 p-3 p-sm-4 p-md-5">
+    <div class="container p-0 d-flex flex-column gap-3 gap-sm-4 gap-lg-5">
+        <h1 class="fw-bold text-center">Liens utiles</h1>
+        {% for lien in liensUtiles %}
+            <div class="bg-body border-custom">
+                <div class="text-center">
+                    <a href="{{lien.lien}}">
+                        {% if lien.logo is not null and lien.logo.filename is not null %}
+                            <img src="{{asset('/images/'~ lien.logo.filename)}}" alt="logo">
+                        {% endif %}
+                    </a>
+                </div>
+                <h1 class="text-center mt-3 mb-3">{{lien.titre}}</h1>
+                <div  class="text-center mt-5 mb-5 ps-5 pe-5 sizeDescription">
+                    {{lien.description|raw}}
+                </div>
+                <div class="pdf-container d-flex justify-content-center align-items-baseline flex-wrap gap-5 mb-5">
+                    {% for pdf in lien.pdfs %}
+                        <div class="pdfTitle">
+                            {% if pdf is not null and pdf.filename %}
+                                <iframe class="pdf-item mb-4" src="{{asset('/pdfs/'~ pdf.filename)}}" width="400" height="300"></iframe>
+                                <h3 class="text-center titreReglement">{{pdf.titre}}</h3>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

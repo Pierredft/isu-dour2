@@ -1,0 +1,379 @@
+:root {
+  --orange: #FFB560;
+  --orange2: #EA9247;
+  --gris-clair: #D9D9D9;
+  --gris-fonce: #505253;
+  --drop-shadow: drop-shadow(0 0 5px #000000);
+  --linear-gradiant-orange: linear-gradient(90deg, var(--orange2), var(--orange), var(--orange2));
+  --linear-gradiant-gris: linear-gradient(90deg, var(--gris-clair), white, var(--gris-clair));
+  --linear-gradiant-orange2: linear-gradient(var(--orange), var(--orange2));
+  --linear-gradiant-orange3: linear-gradient(var(--orange2), var(--orange));
+  --linear-gradiant-gris2: linear-gradient(white, var(--gris-clair));
+}
+
+.pdf-iframe {
+  height: 50svw;
+}
+
+.background-image-custom {
+  display: block;
+  overflow: hidden;
+}
+
+.background-image-custom>* {
+  z-index: 0;
+  position: relative;
+}
+
+.background-image-custom {
+  position: relative;
+  background-image: var(--linear-gradiant-orange);
+  background-color: var(--orange);
+}
+
+.background-image-custom::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: var(--linear-gradiant-gris);
+  background-color: var(--gris-clair);
+  opacity: 1;
+  transition: opacity 0.25s ease-out;
+}
+
+.background-image-custom:hover::before {
+  opacity: 0;
+}
+
+.border-custom {
+  /* border: black 1px solid; */
+  filter: var(--drop-shadow);
+  border-radius: 1rem 0;
+}
+
+.border-custom:nth-child(even of .border-custom) {
+  border-radius: 0 1rem;
+}
+
+.row :nth-child(even) .border-custom {
+  border-radius: 0 1rem;
+}
+
+.bg-gris-clair {
+  background-color: var(--gris-clair);
+}
+
+.nav-pills {
+  --bs-nav-pills-link-active-color: #000000;
+  --bs-nav-pills-link-active-bg: var(--orange);
+}
+
+.nav {
+  --bs-nav-link-color: #000;
+  --bs-nav-link-hover-color: var(--orange2);
+  --bs-nav-link-disabled-color: var(--bs-secondary-color);
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)) ,url("/images/background/IMG_6836.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100svh;
+}
+
+.bloc-blanc {
+  border: 2px solid var(--gris-fonce);
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+  overflow: hidden;
+}
+
+.drop-shadow1 {
+  filter: var(--drop-shadow);
+}
+
+/* Caroussel */
+.carousel-item img,
+.custom-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Caroussel */
+
+/* Accueil */
+
+/* Image haut du home */
+.titre-isu {
+  filter: drop-shadow(3px 6px 2px black);
+}
+
+.titre-ups {
+  position: absolute;
+  filter: drop-shadow(5px 5px 5px #000000) drop-shadow(0px 0px 30px #000000);
+  width: 25%;
+  min-width: 150px;
+  bottom: -10%;
+  right: 10%;
+}
+
+/* Image haut du home */
+
+/* Actualité */
+.actualite {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: solid 1px black;
+  border-radius: 30px;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.titreActu {
+  color: var(--orange2);
+  font-size: 6vh;
+  filter: drop-shadow(5px 5px 5px #000000) drop-shadow(0px 0px 30px #000000);
+}
+
+.dateActu {
+  color: var(--gris-fonce);
+}
+
+.descriptionActu {
+  font-size: 3vh;
+  width: 80%;
+}
+
+.imgActu {
+  width: 350px;
+  height: auto;
+}
+
+/* Actualité */
+/* Accueil */
+
+/* Formation */
+
+/* Formation */
+
+/* Contact */
+/* Texte */
+.contactSize {
+  font-size: 10vh;
+}
+
+.textContact {
+  background-color: white;
+  border: solid 1px black;
+  border-radius: 0px 30px;
+  padding: 2%;
+}
+
+/* Texte */
+/* Tableau de contact */
+.tableauContact {
+  border: solid 1px black;
+  border-radius: 30px 0px;
+  padding: 2%;
+  background-color: white;
+}
+
+th,
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Tableau de contact */
+/* Contact */
+
+/* Notre ecole */
+/* Tableau */
+.imgHistoire {
+  background-image: url("/images/background/histoire.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bgColonnes {
+  background-color: #ffffffcc;
+}
+
+.imgReglements {
+  background-image: url("/images/background/Reglement-interieur.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.imgNE {
+  background-image: url("/images/background/IMG_6836.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.imgProjet {
+  background-image: url("/images/background/projet.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.imgInscription {
+  background-image: url("/images/background/inscription.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.colonnes>.col-md {
+  height: calc(100px + 20vw);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  transition: flex 0.3s;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .colonnes>.col-md:hover {
+    flex: 2;
+  }
+}
+
+.imgAcces {
+  background-image: url("/images/background/ecole.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.titleCategorie {
+  text-decoration: none;
+  color: black;
+  border: solid 1px black;
+  border-radius: 10px;
+  background-color: #D9D9D9;
+  font-size: 2vh;
+  width: fit-content;
+  transition: all 0.25s ease-out;
+}
+
+.titleCategorie:hover {
+  transform: scale(1.25, 1.25);
+  background-color: #FFB560;
+}
+
+/* Tableau */
+
+/* Histoire */
+.imgFondateur {
+  width: 100%;
+}
+
+@media (min-width: 576px) {
+  .imgFondateur {
+    max-width: 300px;
+  }
+}
+
+/* Histoire */
+
+/* Accès */
+.imgLocomotion {
+  max-width: 280px;
+  height: auto;
+}
+
+/* Accès */
+/* Notre ecole en image */
+/* titre et carousel */
+.visite {
+  background-color: rgba(217, 217, 217, 0.75);
+  width: 80%;
+  border: solid 1px black;
+  border-radius: 30px 0px;
+}
+
+/* titre et carousel */
+/* Notre ecole en image */
+
+/* Nos projet */
+.sizeDescriptionProjet {
+  font-size: 2.5vh;
+}
+
+/* Nos projet */
+
+/* Notre ecole */
+
+/* Liens utiles */
+/* Mise en forme pdf et titre */
+.pdfTitle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.titreReglement {
+  width: 80%;
+}
+
+/* Mise en forme pdf et titre */
+
+/* taille de la description */
+.sizeDescription {
+  font-size: 2.5vh;
+}
+
+/* taille de la description */
+/* Liens utiles */
+
+/* Calendrier */
+
+/* Calendrier */
+
+/* Couleurs principales */
+.color1 {
+  color: var(--orange);
+}
+
+.color2 {
+  color: var(--gris-clair);
+}
+
+.color3 {
+  color: var(--gris-fonce);
+}
+
+.color4 {
+  color: var(--orange2);
+}
+
+/* Couleurs principales */
+
+@media only screen and (max-width: 767px) {
+  .titre-ups {
+    position: static;
+    width: 50%;
+  }
+}

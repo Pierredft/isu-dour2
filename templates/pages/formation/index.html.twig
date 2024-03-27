@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ISU DOUR - {{formation.nom}}{% endblock %}
+
+{% block body %}
+{% set hasLogo = formation.logo is not null and formation.logo.filename is not null %}
+{% set hasImages = formation.images|length > 0 %}
+{% set hasDescription = formation.description is not null %}
+<div class="m-5 mx-lg-5 mx-md-4 mx-sm-3 mx-2 bloc-blanc rounded-4 p-3 p-sm-4 p-md-5">
+    <div class="container p-0 d-flex flex-column gap-3 gap-sm-4 gap-lg-5">
+        <h1 class="text-center fw-bold">{{formation.nom}}</h1>
+        {% if hasLogo %}
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="ratio ratio-1x1">
+                    <img class="rounded drop-shadow1 custom-img" src="{{asset('images/' ~ formation.logo.filename)}}"
+                        alt="logo formation">
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% if hasImages or hasDescription %}
+        <div class="bg-body border-custom p-3 p-sm-4">
+            {% if hasImages %}
+            <div class="col-12 col-md-6 me-4 mb-4 mb-sm-0 float-start order-1">
+                <figure>
+                    <div id="carouselExampleSlidesOnly" class="figure-img carousel-fade slide"
+                        data-controller="carousel">
+                        <div class="carousel-inner rounded drop-shadow1 ratio ratio-16x9">
+                            {% for image in formation.images %}
+                            <div class="carousel-item {{loop.first ? 'active'}}">
+                                <img src="{{asset('images/'~ image.filename)}}"
+                                    alt="{{'Image formation '~ loop.index}}">
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <figcaption class="figure-caption text-center">La formation en quelques images.</figcaption>
+                </figure>
+            </div>
+            {% endif %}
+            {% if hasDescription %}
+            <div class="text-center {{hasImages ? 'text-md-start'}}">
+                <h3>Description de la formation</h3>
+                <p>{{formation.description|default('')}}</p>
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+        <div class="bg-body border-custom p-3 p-sm-4 text-center">
+            <h3>Enseignement : <a
+                    href="{{path('app_enseignements_show', {'id':formation.niveau.enseignement.id})}}">{{formation.niveau.enseignement}}</a>
+            </h3>
+            <h3>Niveau : <a
+                    href="{{path('app_enseignements_show', {'id':formation.niveau.enseignement.id}) ~ '#niveau' ~ formation.niveau.id}}">{{formation.niveau.titre}}</a>
+            </h3>
+        </div>
+        {% if formation.horraires and formation.horraires.filename %}
+        <iframe src="{{asset('/pdfs/'~ formation.horraires.filename)}}" frameborder="0" width="100%"
+            class="pdf-iframe"></iframe>
+        {% else %}
+        {% for courscat in formation.coursCategories %}
+        <div class="bg-body border-custom p-3 p-sm-4">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="w-50">{{courscat.titre}}</th>
+                            {% if courscat.totalHeures > 0 %}
+                            <th class="w-50">{{courscat.totalHeures}}h</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cours in courscat.cours %}
+                        <tr>
+                            {% if cours.heures > 0 %}
+                                <td>{{cours.titre}}</td>
+                                <td>{{cours.heures}}h</td>
+                            {% else %}
+                                <td colspan="2">{{cours.titre}}</td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

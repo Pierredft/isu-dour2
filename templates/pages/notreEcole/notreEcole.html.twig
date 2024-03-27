@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+{% block title %}ISU DOUR - Notre École{% endblock %}
+{% block body %}
+    <div class="container-fluid mt-5 mb-5 text-center">
+        <div class="row colonnes">
+            <div class="col-md imgHistoire bgColonnes">
+                <a class="background-image-custom titleCategorie p-3" href="{{path('histoire')}}"><span>Histoire</span></a>
+            </div>
+            <div class="col-md imgAcces bgColonnes">
+                <a class="background-image-custom titleCategorie p-3" href="{{path('app_acces')}}"><span>Accès</span></a>
+            </div>
+            <div class="col-md bgColonnes imgNE">
+                <a class="background-image-custom titleCategorie p-3" href="{{path('app_visite')}}"><span>Notre école en image</span></a>
+            </div>
+            <div class="col-md bgColonnes imgProjet">
+                <a class="background-image-custom titleCategorie p-3" href="{{path('app_projet')}}"><span>Nos projets</span></a>
+            </div>
+            <div class="col-md imgReglements bgColonnes ">
+                <a class="background-image-custom titleCategorie p-3" href="{{path('app_reglement')}}"><span>Nos réglements</span></a>
+            </div>
+            <div class="col-md bgColonnes imgInscription">
+                <a class="background-image-custom titleCategorie p-3" href="{{path('app_inscription')}}"><span>Inscription</span></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

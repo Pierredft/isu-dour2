@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ISU DOUR - Nos réglements{% endblock %}
+
+{% block body %}
+    {% for reglement in reglements %}
+        <div class="affReglement mt-5 mb-5">
+            <h1 class="text-center mt-3 mb-3">{{reglement.titre}}</h1>
+            <div class="pdf-container d-flex justify-content-center align-items-center">
+                {% for pdf in reglement.pdfs %}
+                    {% if pdf is not null and pdf.filename %}
+                        <iframe class="pdf-item mb-5" src="{{asset('/pdfs/'~ pdf.filename)}}" width="400" height="300" style="margin-right: 50px;"></iframe>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

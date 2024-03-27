@@ -1,0 +1,38 @@
+<header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid d-flex align-items-center">
+            <div class="collapse navbar-collapse w-100 order-lg-0 order-1" id="navbarSupportedContent">
+                <ul class="navbar-nav w-100 justify-content-end gap-lg-3 text-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link{{app.request.requesturi == path('home.index') ? ' active'}}" href="{{path('home.index')}}">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link{{app.request.requesturi == path('app_enseignements') ? ' active'}}" href="{{path('app_enseignements')}}">Formations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link{{app.request.requesturi == path('app_contact') ? ' active'}}" href="{{path('app_contact')}}">Contacts</a>
+                    </li>
+                </ul>
+            </div>
+            <a class="mx-0 my-3 mx-lg-3 order-lg-1 order-0" href="{{path('home.index')}}"><img class="logo-header" src="/images/logoIsu/logo_SU.png" alt="logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse w-100 order-2" id="navbarSupportedContent">
+                <ul class="navbar-nav w-100 mb-2 mb-lg-0 text-lg-center gap-lg-3">
+                    <li class="nav-item">
+                        <a class="nav-link{{app.request.requesturi == path('notre_ecole') ? ' active'}}" href="{{path('notre_ecole')}}">Notre école</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link{{app.request.requesturi == path('app_liens_utiles') ? ' active'}}" href="{{path('app_liens_utiles')}}">Liens utiles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link{{app.request.requesturi == path('app_calendrier') ? ' active'}}" href="{{path('app_calendrier')}}">Calendrier</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

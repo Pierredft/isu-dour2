@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ISU DOUR - Notre école en image{% endblock %}
+
+{% block body %}
+    {% for visite in visites %}
+        <div class="d-flex justify-content-center">
+            <div class="visite mt-5 mb-5">
+                <h1 class="text-center mt-5 mb-5">{{visite.titre}}</h1>
+                <div id="carouselExampleSlidesOnly" class="carousel slide mx-auto" data-controller="carousel">
+                    <div class="carousel-inner">
+                        {% for image in visite.images %}
+                            <div class="carousel-item {{loop.first ? 'active'}}">
+                                <img src="{{asset('images/'~ image.filename)}}" class="d-block w-50 mb-5 mx-auto" alt="...">
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

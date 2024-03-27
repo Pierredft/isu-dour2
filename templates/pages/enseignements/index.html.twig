@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ISU DOUR - Formations{% endblock %}
+
+{% block body %}
+<div class="m-5 mx-lg-5 mx-md-4 mx-sm-3 mx-2 bloc-blanc rounded-4 p-3 p-sm-4 p-md-5">
+    <div class="container p-0">
+        <h1 class="text-center fw-bold">Nos formations</h1>
+        <div class="row mt-0 g-md-5 g-sm-4 g-3">
+            <div class="col-12 col-lg-4 text-center">
+                <div class="bg-body border-custom p-3 p-sm-4 h-100">
+                    <ul class="enseignements nav nav-pills flex-column" data-controller="enseignements-nav">
+                        {% for e in enseignements %}
+                            <li class="nav-item {{loop.last ?: 'mb-2'}}">
+                                {% if e.titre == enseignement.titre|default('') %}
+                                    <a data-turbo-stream="true" class="nav-link active" data-enseignements-nav-target="active" data-action="enseignements-nav#navLinkClick"
+                                        aria-current="page" href="{{path('app_enseignements_show', {'id':e.id})}}">
+                                        <span>{{e.titre}}</span>
+                                    </a>
+                                {% else %}
+                                    <a data-turbo-stream="true" class="nav-link" data-action="enseignements-nav#navLinkClick"
+                                        aria-current="page" href="{{path('app_enseignements_show', {'id':e.id})}}">
+                                        <span>{{e.titre}}</span>
+                                    </a>
+                                {% endif %}
+                            </li>
+                        {% else %}
+                            <h5 class="m-2 text-center">Il n'y a pas d'enseignement.</h5>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-lg-8">
+                <div id="enseignement" class="bg-body border-custom p-3 p-sm-4 h-100">
+                    {{ include('pages/enseignements/enseignement_content.html.twig', {'enseignement': enseignement}) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

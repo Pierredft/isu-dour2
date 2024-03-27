@@ -1,0 +1,66 @@
+{% extends "base.html.twig" %}
+{% block title %}ISU DOUR - Accueil{% endblock %}
+{% block body %}
+<div class="container my-5">
+    <div class="row position-relative justify-content-center">
+        <img src="images/logoAccueil/ISU_3.png" class="titre-isu w-100 my-5" alt="">
+        <img src="images/logoAccueil/U_P_S.png" class="titre-ups" alt="">
+    </div>
+    <div class="row justify-content-center my-5 mx-0">
+        <a href="{{path('app_enseignements')}}"
+            class="background-image-custom text-center fs-2 w-auto my-5 px-5 py-3 text-decoration-none text-black drop-shadow1 rounded-4">
+            <span>Découvrir les formations</span>
+        </a>
+    </div>
+</div>
+{% if accueil %}
+    {% for actualite in accueil.actualites %}
+    <div class="actualite">
+        <h1 class="titreActu mt-3">{{actualite.titre}}</h1>
+        <h2 class="dateActu mt-3">{{ actualite.date|date('d/m/Y') }}</h2>
+        <p class="text-center descriptionActu mt-3">{{actualite.description}}</p>
+        {% if actualite.image and actualite.image.filename %}
+        <img class="img-fluid imgActu mt-3 mb-4" src="{{asset('images/'~ actualite.image.filename)}}" alt="">
+        {% endif %}
+    </div>
+    {% endfor %}
+    {% if accueil.images|length > 0 %}
+    <div class="bg-body drop-shadow1 my-5">
+        <div class="container py-5">
+            <div class="row align-items-center g-md-5 g-sm-4 g-3">
+                <div class="col-md-6 order-md-1">
+                    <h2 class="text-center text-md-start">Découvrez notre école en quelques images</h2>
+                </div>
+                <div id="carouselExampleSlidesOnly" class="carousel carousel-fade slide col-md-6 order-md-0"
+                    data-controller="carousel">
+                    <div class="carousel-inner rounded drop-shadow1 ratio ratio-16x9">
+                        {% for image in accueil.images %}
+                        <div class="carousel-item {{loop.first ? 'active'}}">
+                            <img src="{{asset('images/'~ image.filename)}}" alt="{{'Image accueil '~ loop.index}}">
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% if accueil.video and accueil.video.filename %}
+    <div class="bg-body drop-shadow1 my-5">
+        <div class="container py-5">
+            <div class="row align-items-center g-md-5 g-sm-4 g-3">
+                <div class="col-md-6">
+                    <h2 class="text-center text-md-end">Visionnez une vidéo de présentation</h2>
+                </div>
+                <div class="col-md-6">
+                    <video class="ratio ratio-16x9 rounded drop-shadow1" controls>
+                        <source src="{{asset('videos/'~ accueil.video.filename)}}" type="video/mp4">
+                        Votre navigateur ne supporte pas la lecture de la vidéo.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% endif %}
+{% endblock %}

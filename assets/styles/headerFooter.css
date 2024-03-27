@@ -1,0 +1,93 @@
+/* HEADER */
+
+.navbar {
+    border-bottom: var(--gris-fonce) solid 2px;
+    --bs-navbar-padding-x: 0;
+    --bs-navbar-padding-y: 0.5rem;
+    --bs-navbar-color: #000;
+    --bs-navbar-hover-color: var(--orange2);
+    --bs-navbar-disabled-color: rgba(var(--bs-emphasis-color-rgb), 0.3);
+    --bs-navbar-active-color: var(--orange2);
+    --bs-nav-link-color: var(--gris-fonce);
+    --bs-nav-link-font-size: 24px;
+}
+
+/* Logo */
+.logo-header {
+    width: 150px;
+}
+
+/* Logo */
+/* HEADER */
+
+/* FOOTER */
+/* LogoEcole */
+.logoEcole {
+    max-width: 150px;
+}
+
+.logoEcole:hover {
+    transform: scale(1.25, 1.25);
+}
+
+.logoFooter:hover {
+    transform: scale(1.35, 1.35);
+}
+
+.logoEcole, .logoFooter {
+    transition: transform 0.25s ease-out;
+}
+/* LogoEcole */
+
+/* LogoFooter */
+.logoFooter {
+    max-width: 75px;
+    width: calc(50px + 3vw);
+}
+
+/* LogoFooter */
+
+/* NavFooter */
+.navFooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+/* NavFooter */
+
+/* Adresse footer */
+.adresseSize {
+    font-size: 20px;
+}
+
+/* Adresse footer */
+
+/* Mentions légale */
+.mentionsLegales {
+    border-bottom: solid 1px #D9D9D9;
+}
+
+.mentions:hover {
+    color: var(--orange2);
+    cursor: pointer;
+}
+
+.mentions {
+    text-decoration: none;
+    color: black;
+    font-size: 3vh;
+}
+
+/* Mentions légales */
+
+
+
+footer {
+    border-top: solid 2px var(--gris-fonce);
+    top: 100%;
+    position: sticky;
+}

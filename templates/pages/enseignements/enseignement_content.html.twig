@@ -1,0 +1,30 @@
+{% if enseignement %}
+    {% for niveau in enseignement.niveaux %}
+        <h4 id="niveau{{niveau.id}}" class="text-center">{{niveau.titre}}</h4>
+        {% if niveau.formations|length %}
+            <div class="justify-content-center row row-cols-1 row-cols-sm-2 row-cols-xxl-3 p-3 g-3">
+                {% for formation in niveau.formations %}
+                    <div class="col">
+                        <a href="{{path('app_formation_show', {'id':formation.id})}}"
+                            class="d-flex card background-image-custom formation-card text-center h-100">
+                            {% if formation.logo and formation.logo.filename %}
+                            <div class="d-sm-block d-none ratio ratio-1x1">
+                                <img src="{{asset('images/' ~ formation.logo.filename)}}" class="card-img-top custom-img" alt="logo formation">
+                            </div>
+                            {% endif %}
+                            <div class="card-body p-4 d-flex align-items-center justify-content-center">
+                                <h5 class="card-title m-0">{{formation.nom}}</h5>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <h5 class="text-center">Ce niveau ne contient pas de formation.</h5>
+        {% endif %}
+    {% else %}
+        <h3 class="text-center">Aucune formation disponible.</h3>
+    {% endfor %}
+{% else %}
+    <h2 class="text-center">Sélectionnez un enseignement dans le menu pour commencer.</h2>
+{% endif %}
